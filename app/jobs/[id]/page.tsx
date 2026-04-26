@@ -70,6 +70,15 @@ export default function JobDetailPage() {
     })
   }, [id, router])
 
+  useEffect(() => {
+    if (!user || user.role !== 'jobseeker') return
+    fetch('/api/applications').then(r => r.json()).then(data => {
+      if (Array.isArray(data) && data.some((a: { jobListing: { id: string } }) => a.jobListing?.id === id)) {
+        setApplied(true)
+      }
+    })
+  }, [user, id])
+
   async function submitReview(e: React.FormEvent) {
     e.preventDefault()
     if (!job) return

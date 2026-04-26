@@ -35,7 +35,6 @@ function RegisterForm() {
   const [phone, setPhone] = useState('')
   const [website, setWebsite] = useState('')
 
-  const [agreeTerms, setAgreeTerms] = useState(false)
   const [agreeCheck, setAgreeCheck] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -55,7 +54,6 @@ function RegisterForm() {
     setError('')
     if (type === 'jobseeker' && !vnr) { setError('Please enter your V-nummer'); return }
     if (type === 'employer' && password !== confirmPassword) { setError('Passwords do not match'); return }
-    if (!agreeTerms) { setError('Please agree to the terms'); return }
     if (type === 'employer' && !agreeCheck) { setError('Please confirm the background check'); return }
 
     const effectivePassword = type === 'jobseeker' ? vnr : password
@@ -180,11 +178,6 @@ function RegisterForm() {
                 </div>
               </>
             )}
-
-            <label className="flex items-start gap-2 cursor-pointer mt-2">
-              <input type="checkbox" checked={agreeTerms} onChange={e => setAgreeTerms(e.target.checked)} className="mt-0.5 accent-orange-500" />
-              <span className="text-sm text-gray-600">{t('agreeTerms') ?? 'I agree to the terms and conditions'}</span>
-            </label>
 
             <button
               type="submit"

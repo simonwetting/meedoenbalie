@@ -37,7 +37,7 @@ export default function ApplicationsPage() {
   useEffect(() => {
     if (!user) return
     fetch('/api/applications').then(r => r.json()).then(data => {
-      setApplications(data)
+      setApplications(Array.isArray(data) ? data : [])
       setDataLoading(false)
     })
   }, [user])
