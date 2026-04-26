@@ -140,10 +140,7 @@ function RegisterForm() {
                     <div className="flex-1"><Field label="Last name" value={lastName} onChange={setLastName} /></div>
                   </div>
                 )}
-                <div>
-                  <Field label={t('phoneNumber')} type="tel" value={jobseekerPhone} onChange={setJobseekerPhone} />
-                  <p className="text-xs text-gray-400 mt-1">{t('phonePrivateNote')}</p>
-                </div>
+                <Field label={`${t('phoneNumber')} (${t('phonePrivateNote')})`} type="tel" value={jobseekerPhone} onChange={setJobseekerPhone} />
               </div>
             )}
 
