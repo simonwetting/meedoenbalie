@@ -139,6 +139,8 @@ export default function JobDetailPage() {
                 {job.employer.verified && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">✓ {t('verifiedBadge')}</span>}
                 {job.jobType === 'volunteer'
                   ? <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">🤝 {t('jobTypeVolunteer')}</span>
+                  : job.jobType === 'ervaringswerkplek'
+                  ? <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">🌱 {t('jobTypeErvaringswerkplek')}</span>
                   : <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">💼 {t('jobTypeRegular')}</span>
                 }
                 {job.category && <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{job.category}</span>}

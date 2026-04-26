@@ -69,11 +69,11 @@ export default function JobsPage() {
           </select>
         </div>
 
-        <div className="flex gap-2 mb-8">
-          {[['', 'allJobTypes'], ['regular', 'jobTypeRegular'], ['volunteer', 'jobTypeVolunteer']].map(([val, key]) => (
+        <div className="flex gap-2 mb-8 flex-wrap">
+          {[['', 'allJobTypes'], ['regular', 'jobTypeRegular'], ['volunteer', 'jobTypeVolunteer'], ['ervaringswerkplek', 'jobTypeErvaringswerkplek']].map(([val, key]) => (
             <button key={val} onClick={() => setJobType(val)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${jobType === val ? 'bg-orange-500 text-white border-orange-500' : 'border-gray-300 text-gray-600 hover:border-orange-300'}`}>
-              {val === 'volunteer' ? '🤝 ' : val === 'regular' ? '💼 ' : ''}{t(key)}
+              {val === 'volunteer' ? '🤝 ' : val === 'regular' ? '💼 ' : val === 'ervaringswerkplek' ? '🌱 ' : ''}{t(key)}
             </button>
           ))}
         </div>
@@ -111,6 +111,8 @@ function JobCard({ job, t }: { job: Job; t: (k: string) => string }) {
             {job.employer.verified && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">✓ Verified</span>}
             {job.jobType === 'volunteer'
               ? <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">🤝 {t('jobTypeVolunteer')}</span>
+              : job.jobType === 'ervaringswerkplek'
+              ? <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">🌱 {t('jobTypeErvaringswerkplek')}</span>
               : <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-medium">💼 {t('jobTypeRegular')}</span>
             }
             {job.category && <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{job.category}</span>}

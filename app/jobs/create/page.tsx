@@ -95,7 +95,7 @@ export default function CreateJobPage() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">{t('jobTypeLabel')}</label>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 <button type="button" onClick={() => setJobType('regular')}
                   className={`flex-1 py-2.5 rounded-lg font-semibold text-sm border transition-colors ${jobType === 'regular' ? 'bg-orange-500 text-white border-orange-500' : 'border-gray-300 text-gray-600 hover:border-orange-300'}`}>
                   💼 {t('jobTypeRegular')}
@@ -103,6 +103,10 @@ export default function CreateJobPage() {
                 <button type="button" onClick={() => setJobType('volunteer')}
                   className={`flex-1 py-2.5 rounded-lg font-semibold text-sm border transition-colors ${jobType === 'volunteer' ? 'bg-green-600 text-white border-green-600' : 'border-gray-300 text-gray-600 hover:border-green-300'}`}>
                   🤝 {t('jobTypeVolunteer')}
+                </button>
+                <button type="button" onClick={() => setJobType('ervaringswerkplek')}
+                  className={`flex-1 py-2.5 rounded-lg font-semibold text-sm border transition-colors ${jobType === 'ervaringswerkplek' ? 'bg-purple-600 text-white border-purple-600' : 'border-gray-300 text-gray-600 hover:border-purple-300'}`}>
+                  🌱 {t('jobTypeErvaringswerkplek')}
                 </button>
               </div>
             </div>
