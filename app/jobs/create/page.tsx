@@ -18,8 +18,7 @@ export default function CreateJobPage() {
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
   const [hours, setHours] = useState('')
-  const [salaryMin, setSalaryMin] = useState('')
-  const [salaryMax, setSalaryMax] = useState('')
+  const [salary, setSalary] = useState('')
   const [category, setCategory] = useState(CATEGORIES[0])
   const [jobType, setJobType] = useState('regular')
   const [selectedShifts, setSelectedShifts] = useState<string[]>([])
@@ -46,8 +45,8 @@ export default function CreateJobPage() {
       body: JSON.stringify({
         title, description, location: location || null,
         hoursPerWeek: hours ? parseInt(hours) : null,
-        salaryMin: salaryMin ? parseFloat(salaryMin) : null,
-        salaryMax: salaryMax ? parseFloat(salaryMax) : null,
+        salaryMin: salary ? parseFloat(salary) : null,
+        salaryMax: salary ? parseFloat(salary) : null,
         category, jobType,
         shifts: selectedShifts.length > 0 ? selectedShifts : null,
         requirements: requirements.filter(Boolean),
@@ -117,9 +116,7 @@ export default function CreateJobPage() {
             <Field label={t('location')} value={location} onChange={setLocation} placeholder="e.g. Amsterdam" />
             <div className="grid grid-cols-2 gap-4">
               <Field label={t('hrsWeekLabel')} value={hours} onChange={setHours} type="number" placeholder="e.g. 24" />
-              <div></div>
-              <Field label={t('minSalary')} value={salaryMin} onChange={setSalaryMin} type="number" placeholder="e.g. 12.50" />
-              <Field label={t('maxSalary')} value={salaryMax} onChange={setSalaryMax} type="number" placeholder="e.g. 15.00" />
+              <Field label={`${t('salary')} (€/hr)`} value={salary} onChange={setSalary} type="number" placeholder="e.g. 13.50" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">{t('preferredShifts')}</label>
